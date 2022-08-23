@@ -1,14 +1,14 @@
 """
 This package implements permutations and some functions of them. It depends
-only  on  the  package  combinat. 
+only  on  the  package  `Combinat` (which itself depends on `Primes`). 
 
 This  package  follows  the  design  of  permutations  in tha GAP language.
 `Perm`s  are permutations  of the  set `1:n`,  represented internally  as a
 vector  of `n`  integers holding  the images  of `1:n`.  The integer `n` is
 called  the degree  of the  permutation. In  this package,  as in  GAP (and
 contrary  to the philosophy of Magma or the package `Permutations.jl`), two
-permutationsof  different  degrees  can  be  multiplied (the resulr has the
-lerger  degree). Two permutations  are equal if  and only if  they move the
+permutations of different  degrees  can  be  multiplied (the result has the
+larger  degree). Two permutations  are equal if  and only if  they move the
 same points in the same way, so two permutations of different degree can be
 equal; the degree is thus an implementation detail so usually it should not
 be used. One should rather use the function `largest_moved_point`.
