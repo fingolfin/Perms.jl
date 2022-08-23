@@ -3,9 +3,6 @@
 Depth=3
 ```
 
-```@index
-Modules=[Perms]
-```
 ```@docs
 Perms
 Perm

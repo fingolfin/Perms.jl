@@ -7,27 +7,6 @@
 
 - [Permutations](index.md#Permutations)
 
-- [`Perms.Perm`](index.md#Perms.Perm)
-- [`Perms.Perm`](index.md#Perms.Perm-Tuple{AbstractMatrix{<:Integer}})
-- [`Perms.Perm`](index.md#Perms.Perm-Tuple{Vararg{Integer}})
-- [`Perms.Perm`](index.md#Perms.Perm-Tuple{AbstractMatrix, AbstractMatrix})
-- [`Perms.Perm`](index.md#Perms.Perm-Tuple{AbstractVector, AbstractVector})
-- [`Perms.Perm_rowcol`](index.md#Perms.Perm_rowcol)
-- [`Perms.cycles`](index.md#Perms.cycles-Tuple{Perm})
-- [`Perms.cycletype`](index.md#Perms.cycletype-Tuple{Perm})
-- [`Perms.largest_moved_point`](index.md#Perms.largest_moved_point-Tuple{Perm})
-- [`Perms.mappingPerm`](index.md#Perms.mappingPerm)
-- [`Perms.orbit`](index.md#Perms.orbit-Tuple{Perm, Integer})
-- [`Perms.orbits`](index.md#Perms.orbits-Tuple{Perm})
-- [`Perms.order`](index.md#Perms.order)
-- [`Perms.randPerm`](index.md#Perms.randPerm)
-- [`Perms.reflength`](index.md#Perms.reflength-Tuple{Perm})
-- [`Perms.restricted`](index.md#Perms.restricted-Tuple{Perm, AbstractVector{<:Integer}})
-- [`Perms.smallest_moved_point`](index.md#Perms.smallest_moved_point)
-- [`Perms.sortPerm`](index.md#Perms.sortPerm)
-- [`Perms.support`](index.md#Perms.support)
-- [`Perms.@perm_str`](index.md#Perms.@perm_str)
-
 <a id='Perms' href='#Perms'>#</a>
 **`Perms`** &mdash; *Module*.
 
