@@ -122,7 +122,7 @@ export restricted, orbit, orbits, order, Perm, largest_moved_point, cycles,
   cycletype, support, @perm_str, smallest_moved_point, reflength,
   mappingPerm, sortPerm, Perm_rowcol, randPerm
 
-using ..Combinat: tally, collectby, arrangements
+using Combinat: tally, collectby, arrangements
 
 """
 `struct Perm{T<:Integer}`
