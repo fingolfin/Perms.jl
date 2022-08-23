@@ -1,0 +1,68 @@
+# auto-generated tests from julia-repl docstrings
+using Test, Perms
+function mytest(f::String,a::String,b::String)
+  println(f," ",a)
+  omit=a[end]==';'
+  a=replace(a,"\\\\"=>"\\")
+  a=repr(MIME("text/plain"),eval(Meta.parse(a)),context=:limit=>true)
+  if omit a="nothing" end
+  a=replace(a,r" *(\n|$)"s=>s"\1")
+  a=replace(a,r"\n$"s=>"")
+  b=replace(b,r" *(\n|$)"s=>s"\1")
+  b=replace(b,r"\n$"s=>"")
+  i=1
+  while i<=lastindex(a) && i<=lastindex(b) && a[i]==b[i]
+    i=nextind(a,i)
+  end
+  if a!=b print("exec=$(repr(a[i:end]))\nmanl=$(repr(b[i:end]))\n") end
+  a==b
+end
+@testset verbose = true "Perms.jl" begin
+@test mytest("Perms.jl","a=Perm(1,2,3)","(1,2,3)")
+@test mytest("Perms.jl","vec(a)","3-element Vector{Int16}:\n 2\n 3\n 1")
+@test mytest("Perms.jl","a==Perm(vec(a))","true")
+@test mytest("Perms.jl","b=Perm(1,2,3,4)","(1,2,3,4)")
+@test mytest("Perms.jl","a*b","(1,3,2,4)")
+@test mytest("Perms.jl","inv(a)","(1,3,2)")
+@test mytest("Perms.jl","a/b","(3,4)")
+@test mytest("Perms.jl","a\\\\b","(1,4)")
+@test mytest("Perms.jl","a^b","(2,3,4)")
+@test mytest("Perms.jl","b^2","(1,3)(2,4)")
+@test mytest("Perms.jl","1^a","2")
+@test mytest("Perms.jl","one(a)","()")
+@test mytest("Perms.jl","sign(a)","1")
+@test mytest("Perms.jl","order(a)","3")
+@test mytest("Perms.jl","largest_moved_point(a)","3")
+@test mytest("Perms.jl","smallest_moved_point(a)","1")
+@test mytest("Perms.jl","Perm{Int8}(a)","Perm{Int8}: (1,2,3)")
+@test mytest("Perms.jl","Matrix(b)","4×4 Matrix{Bool}:\n 0  1  0  0\n 0  0  1  0\n 0  0  0  1\n 1  0  0  0")
+@test mytest("Perms.jl","p=Perm(Int16[1,3,2,4])","(2,3)")
+@test mytest("Perms.jl","vec(p)","4-element Vector{Int16}:\n 1\n 3\n 2\n 4")
+@test mytest("Perms.jl","Matrix(Perm(2,3,4),5)","5×5 Matrix{Bool}:\n 1  0  0  0  0\n 0  0  1  0  0\n 0  0  0  1  0\n 0  1  0  0  0\n 0  0  0  0  1")
+@test mytest("Perms.jl","m=[0 1 0;0 0 1;1 0 0]","3×3 Matrix{Int64}:\n 0  1  0\n 0  0  1\n 1  0  0")
+@test mytest("Perms.jl","Perm(m)","(1,2,3)")
+@test mytest("Perms.jl","Perm([0,2,4],[4,0,2])","(1,3,2)")
+@test mytest("Perms.jl","Perm([0 1 0;0 0 1;1 0 0],[1 0 0;0 1 0;0 0 1];dims=1)","(1,3,2)")
+@test mytest("Perms.jl","Perm([0 1 0;0 0 1;1 0 0],[1 0 0;0 1 0;0 0 1];dims=2)","(1,2,3)")
+@test mytest("Perms.jl","[5,4,6,1,7,5]^Perm(1,3,5,6,4)","6-element Vector{Int64}:\n 1\n 4\n 5\n 5\n 6\n 7")
+@test mytest("Perms.jl","m=[3*i+j for i in 0:2,j in 1:3]","3×3 Matrix{Int64}:\n 1  2  3\n 4  5  6\n 7  8  9")
+@test mytest("Perms.jl","p=Perm(1,2,3)","(1,2,3)")
+@test mytest("Perms.jl","m^p","3×3 Matrix{Int64}:\n 7  8  9\n 1  2  3\n 4  5  6")
+@test mytest("Perms.jl","^(m,p;dims=2)","3×3 Matrix{Int64}:\n 3  1  2\n 6  4  5\n 9  7  8")
+@test mytest("Perms.jl","^(m,p;dims=(1,2))","3×3 Matrix{Int64}:\n 9  7  8\n 3  1  2\n 6  4  5")
+@test mytest("Perms.jl","m=[1 2 3;4 5 6;7 8 9]","3×3 Matrix{Int64}:\n 1  2  3\n 4  5  6\n 7  8  9")
+@test mytest("Perms.jl","m^(Perm(1,2),Perm(2,3))","3×3 Matrix{Int64}:\n 4  6  5\n 1  3  2\n 7  9  8")
+@test mytest("Perms.jl","orbits(Perm(1,2)*Perm(4,5),1:5)","3-element Vector{Vector{\$Idef}}:\n [1, 2]\n [3]\n [4, 5]")
+@test mytest("Perms.jl","cycles(Perm(1,2)*Perm(4,5))","2-element Vector{Vector{\$Idef}}:\n [1, 2]\n [4, 5]")
+@test mytest("Perms.jl","cycletype(Perm(1,2)*Perm(4,5))","2-element Vector{Int64}:\n 2\n 2")
+@test mytest("Perms.jl","cycletype(Perm(1,2)*Perm(4,5);trivial=true)","3-element Vector{Int64}:\n 2\n 2\n 1")
+@test mytest("Perms.jl","cycletype(Perm(1,2)*Perm(4,5);trivial=true,domain=1:6)","4-element Vector{Int64}:\n 2\n 2\n 1\n 1")
+@test mytest("Perms.jl","restricted(Perm(1,2)*Perm(3,4),3:4)","(3,4)")
+@test mytest("Perms.jl","p=mappingPerm([6,7,5])","(5,6,7)")
+@test mytest("Perms.jl","(5:7).^p","3-element Vector{\$Idef}:\n 6\n 7\n 5")
+@test mytest("Perms.jl","mappingPerm([1,2,5,3],[2,3,4,6])","(1,2,3,6,5,4)")
+@test mytest("Perms.jl","a=[1 1 1 -1 -1; 2 0 -2 0 0; 1 -1 1 -1 1; 1 1 1 1 1; 1 -1 1 1 -1]","5×5 Matrix{Int64}:\n 1   1   1  -1  -1\n 2   0  -2   0   0\n 1  -1   1  -1   1\n 1   1   1   1   1\n 1  -1   1   1  -1")
+@test mytest("Perms.jl","b=[1 -1 -1 1 1; 1 1 -1 -1 1; 1 -1 1 -1 1; 2 0 0 0 -2; 1 1 1 1 1]","5×5 Matrix{Int64}:\n 1  -1  -1   1   1\n 1   1  -1  -1   1\n 1  -1   1  -1   1\n 2   0   0   0  -2\n 1   1   1   1   1")
+@test mytest("Perms.jl","p1,p2=Perm_rowcol(a,b)","((1,2,4,5,3), (3,5,4))")
+@test mytest("Perms.jl","a^(p1,p2)==b","true")
+end
