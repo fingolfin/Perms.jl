@@ -2,7 +2,7 @@
 This package implements permutations and some functions of them. It depends
 only  on  the  package  `Combinat` (which itself depends on `Primes`). 
 
-This  package  follows  the  design  of  permutations  in tha GAP language.
+This  package  follows  the  design  of  permutations  in the GAP language.
 `Perm`s  are permutations  of the  set `1:n`,  represented internally  as a
 vector  of `n`  integers holding  the images  of `1:n`.  The integer `n` is
 called  the degree  of the  permutation. In  this package,  as in  GAP (and
